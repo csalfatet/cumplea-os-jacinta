@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Cumpleaños</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&display=swap');
+        body {
+            font-family: 'Baloo 2', cursive;
+            background: linear-gradient(to bottom, #a3cef1, #f0f8ff);
+            text-align: center;
+            color: #333;
+            overflow-x: hidden;
+        }
+        .container {
+            margin: 50px auto;
+            width: 90%;
+            max-width: 600px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ff6f61;
+            font-family: 'Baloo 2', cursive;
+        }
+        .animated-text {
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+        .image-container {
+            margin: 20px 0;
+            animation: fadeIn 3s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .confirm-button {
+            display: inline-block;
+            background-color: #ff6f61;
+            color: white;
+            padding: 15px 30px;
+            margin: 20px 0;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2em;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 111, 97, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(255, 111, 97, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 111, 97, 0);
+            }
+        }
+        .confetti {
+            position: absolute;
+            top: -10px;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            background-color: #ff6f61;
+            opacity: 0.7;
+            animation: fall 5s infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100%) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+        .confetti-piece:nth-child(odd) {
+            background-color: #ffd700;
+        }
+        .colorful-text {
+            font-family: 'Baloo 2', cursive;
+            color: #0672ff;
+            font-size: 1.2em;
+        }
+        .colorful-text strong {
+            color: #ff1493;
+        }
+        .colorful-text span {
+            color: #ff6f61;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="confetti">
+            <div class="confetti-piece" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="confetti-piece" style="left: 20%; animation-delay: 0.5s;"></div>
+            <div class="confetti-piece" style="left: 30%; animation-delay: 1s;"></div>
+            <div class="confetti-piece" style="left: 40%; animation-delay: 1.5s;"></div>
+            <div class="confetti-piece" style="left: 50%; animation-delay: 2s;"></div>
+            <div class="confetti-piece" style="left: 60%; animation-delay: 2.5s;"></div>
+            <div class="confetti-piece" style="left: 70%; animation-delay: 3s;"></div>
+            <div class="confetti-piece" style="left: 80%; animation-delay: 3.5s;"></div>
+            <div class="confetti-piece" style="left: 90%; animation-delay: 4s;"></div>
+        </div>
+        <h1 class="animated-text">¡Estás Invitado!</h1>
+        <div class="image-container">
+            <img src="bluey.png" alt="Bluey" width="80%">
+        </div>
+        <div class="colorful-text">
+            <p>Te invitamos al cumpleaños de <strong>Jacinta Salfate Fassi</strong>.</p>
+            <p>La fiesta será el <strong>sábado 3 de agosto</strong> desde las <strong>16 horas</strong>.</p>
+            <p>¡Ven a disfrutar de un día lleno de diversión con Bluey y amigos!</p>
+        </div>
+        <a href="https://wa.me/+56996456930?text=Confirmo%20asistencia%20al%20cumplea%C3%B1os%20de%20Jacinta%20Salfate%20Fassi" class="confirm-button">Confirmar Asistencia</a>
+    </div>
+</body>
+</html>

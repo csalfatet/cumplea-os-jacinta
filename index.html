@@ -11,6 +11,8 @@
             background: linear-gradient(to bottom, #a3cef1, #f0f8ff);
             text-align: center;
             color: #333;
+            margin: 0;
+            padding: 0;
             overflow-x: hidden;
         }
         .container {
@@ -28,7 +30,6 @@
             font-size: 2.5em;
             margin-bottom: 20px;
             color: #ff6f61;
-            font-family: 'Baloo 2', cursive;
         }
         .animated-text {
             display: inline-block;
@@ -80,7 +81,8 @@
         }
         .confetti {
             position: absolute;
-            top: -10px;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
@@ -111,6 +113,67 @@
         .colorful-text span {
             color: #ff6f61;
         }
+        .date-change {
+            position: relative;
+            font-size: 1.5em;
+            color: #ff6f61;
+            animation: shake 0.5s;
+            animation-delay: 8s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+        }
+        .falling {
+            position: relative;
+            display: inline-block;
+            animation: fallText 2s ease-in-out;
+            animation-fill-mode: forwards;
+            animation-delay: 5s;
+        }
+        @keyframes fallText {
+            0% { opacity: 1; }
+            80% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 0; transform: translateY(50px); }
+        }
+        .new-date {
+            display: none;
+        }
+        /* Responsive adjustments */
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            .confirm-button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+            .colorful-text {
+                font-size: 1em;
+            }
+        }
+        .lightning {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            animation: lightning 1s infinite;
+            pointer-events: none;
+        }
+        @keyframes lightning {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
     </style>
 </head>
 <body>
@@ -126,16 +189,32 @@
             <div class="confetti-piece" style="left: 80%; animation-delay: 3.5s;"></div>
             <div class="confetti-piece" style="left: 90%; animation-delay: 4s;"></div>
         </div>
+        <div class="lightning"></div>
         <h1 class="animated-text">¡Estás Invitado!</h1>
         <div class="image-container">
             <img src="bluey.png" alt="Bluey" width="80%">
         </div>
         <div class="colorful-text">
             <p>Te invitamos al cumpleaños de <strong>Jacinta Salfate Fassi</strong>.</p>
-            <p>La fiesta será el <strong>sábado 3 de agosto</strong> desde las <strong>16 horas</strong>.</p>
+            <p class="falling">La fiesta sería el <strong>sábado 3 de agosto</strong> desde las <strong>16 horas</strong>.</p>
+            <p class="new-date date-change">¡Ahora será el <strong>sábado 10 de agosto</strong> desde las <strong>16 horas</strong>!</p>
             <p>¡Ven a disfrutar de un día lleno de diversión con Bluey y amigos!</p>
         </div>
         <a href="https://wa.me/+56996456930?text=Confirmo%20asistencia%20al%20cumplea%C3%B1os%20de%20Jacinta%20Salfate%20Fassi" class="confirm-button">Confirmar Asistencia</a>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                const fallingText = document.querySelector('.falling');
+                fallingText.style.animation = 'fallText 2s ease-in-out forwards';
+                
+                setTimeout(() => {
+                    fallingText.style.display = 'none';
+                    document.querySelector('.new-date').style.display = 'block';
+                }, 2000);
+            }, 3000);
+        });
+    </script>
 </body>
 </html>
